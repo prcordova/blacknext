@@ -26,7 +26,7 @@ const Static: NextPage = (props: {
   const [clientSideData, setClientSideData] = useState<ApiResponse>();
 
   const fetchData = async () => {
-    const data = await fetch("/api/hello");
+    const data = await fetch(`${process.env.NEXT_PUBLIC_APIURL}/api/hello`);
     const json = await data.json();
     setClientSideData(json);
   };
