@@ -25,15 +25,16 @@ const Static: NextPage = (props: {
 }) => {
   const [clientSideData, setClientSideData] = useState<ApiResponse>();
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const fetchData = async () => {
     const data = await fetch("/api/hello");
     const json = await data.json();
     setClientSideData(json);
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <Container tag="main">
       <h1 className="my-5">Como funcionam as renderizações do Next.js</h1>
