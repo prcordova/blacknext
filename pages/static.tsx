@@ -1,5 +1,5 @@
-import { GetServerSideProps, GetStaticProps, NextPage } from "next";
-import { useEffect, useState } from "react";
+import { GetStaticProps, NextPage } from "next";
+import { ReactNode, useEffect, useState } from "react";
 import { Container, Row, Col } from "reactstrap";
 
 interface ApiResponse {
@@ -20,25 +20,19 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 const Static: NextPage = (props: {
-  children?: React.ReactNode;
+  children?: ReactNode;
   staticData?: ApiResponse;
 }) => {
   const [clientSideData, setClientSideData] = useState<ApiResponse>();
 
-  const fetchData = async () => {
-    const apiUrl = process.env.NEXT_PUBLIC_APIURL;
-    if (!apiUrl) {
-      console.error("NEXT_PUBLIC_APIURL is not defined");
-      return;
-    }
-    const data = await fetch(`${apiUrl}/api/hello`);
-    const json = await data.json();
-    setClientSideData(json);
-  };
-
   useEffect(() => {
     fetchData();
   }, []);
+
+  const fetchData = async () => {
+    const data = await fetch(`/api/hello`).then((res) => res.json());
+    setClientSideData(data);
+  };
 
   return (
     <Container tag="main">
