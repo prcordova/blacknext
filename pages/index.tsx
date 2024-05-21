@@ -2,6 +2,9 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
+import Header from "@/src/components/Header";
+import Link from "next/link";
+import { Button, Container } from "reactstrap";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,7 +17,21 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header />
       <main>
+        <Container className="py-5 text-center">
+          <h1 className="mt-5 display-1">
+            O melhor jeito de comprar o que você ama
+          </h1>
+          <p className="my-4">
+            Lorem ipsum dolor sit amet consectetur adispulis é nozes
+          </p>
+          <Link href="/products">
+            <Button color="dark" className="px-4 pb-2">
+              Conheça nossos produtos!
+            </Button>
+          </Link>
+        </Container>
         <h1>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
