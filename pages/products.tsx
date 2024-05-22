@@ -11,10 +11,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   return { props: { products } };
 };
-const Products: NextPage = (props: {
-  children?: ReactNode;
-  products?: ProductType[];
-}) => {
+
+const Products: NextPage<{ products: ProductType[] }> = ({ products }) => {
   return (
     <>
       <Head>
@@ -27,8 +25,7 @@ const Products: NextPage = (props: {
       <main>
         <Container className="mb-5">
           <h1 className="my-5">Nossos Produtos</h1>
-
-          {<ProductsList products={props.products!} />}
+          <ProductsList products={products} />
         </Container>
       </main>
     </>
