@@ -10,25 +10,15 @@ export type ProductType = {
 };
 
 export const fetchProducts = async () => {
-  try {
-    const products: ProductType[] = await fetch(`${baseUrl}/api/products`).then(
-      (response) => response.json()
-    );
-    return products;
-  } catch (error) {
-    console.error("Failed to fetch products:", error);
-    throw error;
-  }
+  const products: ProductType[] = await fetch(`${baseUrl}/api/products`).then(
+    (response) => response.json()
+  );
+  return products;
 };
 
 export const fetchProduct = async (id: string | number) => {
-  try {
-    const product: ProductType = await fetch(
-      `${baseUrl}/api/products/${id}`
-    ).then((response) => response.json());
-    return product;
-  } catch (error) {
-    console.error(`Failed to fetch product with id ${id}:`, error);
-    throw error;
-  }
+  const product: ProductType = await fetch(
+    `${baseUrl}/api/products/${id}`
+  ).then((response) => response.json());
+  return product;
 };

@@ -1,21 +1,20 @@
 import Head from "next/head";
-import { GetServerSideProps, NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import Header from "@/src/components/Header";
 import { Container } from "reactstrap";
 import ProductsList from "@/src/components/ProductsList";
 import { ProductType, fetchProducts } from "@/src/services/products";
 import { ReactNode } from "react";
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  try {
-    const products = await fetchProducts();
-    return { props: { products } };
-  } catch (error) {
-    console.error("Failed to fetch products:", error);
-    return { props: { products: [] } };
-  }
+export const getStaticProps: GetStaticProps = async () => {
+  const products = await fetchProducts();
+
+  return { props: { products } };
 };
-const Products: NextPage<{ products: ProductType[] }> = ({ products }) => {
+const Products: NextPage = (props: {
+  children?: ReactNode;
+  products?: ProductType[];
+}) => {
   return (
     <>
       <Head>
@@ -28,7 +27,8 @@ const Products: NextPage<{ products: ProductType[] }> = ({ products }) => {
       <main>
         <Container className="mb-5">
           <h1 className="my-5">Nossos Produtos</h1>
-          <ProductsList products={products} />
+
+          {<ProductsList products={props.products!} />}
         </Container>
       </main>
     </>
