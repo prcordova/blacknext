@@ -1,1 +1,1 @@
-export const baseUrl = window.location.origin;
+export const baseUrl = "127.0.0.1:3000";
