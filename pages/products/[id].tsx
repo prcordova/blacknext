@@ -49,7 +49,7 @@ const Product: NextPage = (props: {
       </Head>
 
       <Container className="mt-5">
-        <ProductDetails product={props?.product} />
+        {props.product && <ProductDetails product={props.product} />}
       </Container>
     </>
   );
