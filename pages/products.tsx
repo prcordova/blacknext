@@ -7,11 +7,14 @@ import { ProductType, fetchProducts } from "@/src/services/products";
 import { ReactNode } from "react";
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const products = await fetchProducts();
-
-  return { props: { products } };
+  try {
+    const products = await fetchProducts();
+    return { props: { products } };
+  } catch (error) {
+    console.error("Failed to fetch products:", error);
+    return { props: { products: [] } };
+  }
 };
-
 const Products: NextPage<{ products: ProductType[] }> = ({ products }) => {
   return (
     <>
