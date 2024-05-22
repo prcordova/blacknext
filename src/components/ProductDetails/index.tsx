@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { Button, Col, Row } from "reactstrap";
 import { ProductType } from "../../services/products";
 import SuccessToast from "../SuccessToast/index";
-import { useCart } from "@/hooks/useCart";
+import { useCart } from "../../../hooks/useCart";
 
 type ProductDetailsProps = {
   product: ProductType;

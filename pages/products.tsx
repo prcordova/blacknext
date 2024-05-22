@@ -1,9 +1,9 @@
 import Head from "next/head";
 import { GetStaticProps, NextPage } from "next";
-import Header from "@/src/components/Header";
+import Header from "../src/components/Header";
 import { Container } from "reactstrap";
-import ProductsList from "@/src/components/ProductsList";
-import { ProductType, fetchProducts } from "@/src/services/products";
+import ProductsList from "../src/components/ProductsList";
+import { ProductType, fetchProducts } from "../src/services/products";
 import { ReactNode } from "react";
 
 export const getStaticProps: GetStaticProps = async () => {

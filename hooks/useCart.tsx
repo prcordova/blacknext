@@ -1,4 +1,4 @@
-import { ProductType } from "@/src/services/products";
+import { ProductType } from "../src/services/products";
 import {
   ReactNode,
   createContext,

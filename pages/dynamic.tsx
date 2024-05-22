@@ -1,4 +1,4 @@
-import { baseUrl } from "@/src/services/api";
+import { baseUrl } from "../src/services/api";
 import { GetServerSideProps, NextPage } from "next";
 import { useEffect, useState } from "react";
 import { Container, Row, Col } from "reactstrap";

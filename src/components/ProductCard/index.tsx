@@ -3,8 +3,8 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { Button, Card, CardBody, CardSubtitle } from "reactstrap";
 import SuccessToast from "../SuccessToast/index";
-import { ProductType } from "@/src/services/products";
-import { useCart } from "@/hooks/useCart";
+import { ProductType } from "../../services/products";
+import { useCart } from "../../../hooks/useCart";
 
 type ProductCardProps = {
   product: ProductType;
@@ -23,7 +23,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             className="card-img-top"
             src={imageUrl}
             alt="Product"
-            height={250}
+            height={500}
             width={600}
           />
         </Link>
