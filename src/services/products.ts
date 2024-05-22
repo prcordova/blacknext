@@ -8,15 +8,25 @@ export type ProductType = {
 };
 
 export const fetchProducts = async () => {
-  const products: ProductType[] = await fetch(
-    `${process.env.NEXT_PUBLIC_APIURL}/api/products`
-  ).then((response) => response.json());
-  return products;
+  try {
+    const products: ProductType[] = await fetch(
+      `${process.env.NEXT_PUBLIC_APIURL}/api/products`
+    ).then((response) => response.json());
+    return products;
+  } catch (error) {
+    console.error("Failed to fetch products:", error);
+    throw error;
+  }
 };
 
 export const fetchProduct = async (id: string | number) => {
-  const product: ProductType = await fetch(
-    `${process.env.NEXT_PUBLIC_APIURL}/api/products/${id}`
-  ).then((response) => response.json());
-  return product;
+  try {
+    const product: ProductType = await fetch(
+      `${process.env.NEXT_PUBLIC_APIURL}/api/products/${id}`
+    ).then((response) => response.json());
+    return product;
+  } catch (error) {
+    console.error(`Failed to fetch product with id ${id}:`, error);
+    throw error;
+  }
 };
