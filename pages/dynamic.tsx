@@ -1,3 +1,4 @@
+import { baseUrl } from "@/src/services/api";
 import { GetServerSideProps, NextPage } from "next";
 import { useEffect, useState } from "react";
 import { Container, Row, Col } from "reactstrap";
@@ -7,9 +8,9 @@ interface ApiResponse {
   timestamp: string;
 }
 export const getServerSideProps: GetServerSideProps = async () => {
-  const serverSideData: ApiResponse = await fetch(
-    `${process.env.NEXT_PUBLIC_APIURL}/api/hello`
-  ).then((res) => res.json());
+  const serverSideData: ApiResponse = await fetch(`${baseUrl}/api/hello`).then(
+    (res) => res.json()
+  );
   return {
     props: {
       serverSideData,
